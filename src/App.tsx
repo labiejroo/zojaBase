@@ -6,7 +6,8 @@ import { ZojaEmbed } from "./components/ZojaEmbed";
  * i dało się sprawdzić, czy modal w iframe trzyma się pola widzenia.
  */
 
-const ZOJA_ORIGIN = import.meta.env.VITE_ZOJA_ORIGIN ?? "http://localhost:3000";
+const ZOJA_ORIGIN =
+  import.meta.env.VITE_ZOJA_ORIGIN ?? "https://d3idn259a1zzt7.cloudfront.net";
 const SHOW_DIAGNOSTICS = import.meta.env.VITE_SHOW_DIAGNOSTICS === "true";
 
 export default function App() {
@@ -26,14 +27,15 @@ export default function App() {
         <section className="prose">
           <h2>Kilka słów, zanim przyjedziecie</h2>
           <p>
-            Bardzo chcemy Was zobaczyć, ale pierwsze tygodnie są nieprzewidywalne.
-            Dlatego zamiast umawiać się przez telefon, zrobiliśmy kalendarz.
-            Wybierzcie weekend, który Wam pasuje, a my potwierdzimy go mailem.
+            Bardzo chcemy Was zobaczyć, ale pierwsze tygodnie są
+            nieprzewidywalne. Dlatego zamiast umawiać się przez telefon,
+            zrobiliśmy kalendarz. Wybierzcie weekend, który Wam pasuje, a my
+            potwierdzimy go mailem.
           </p>
           <p>
             Rezerwujemy całe weekendy — sobota i niedziela zawsze razem. Jeśli
-            wolicie przyjechać tylko na jeden dzień, to oczywiście też w porządku,
-            po prostu zaznaczcie to w formularzu.
+            wolicie przyjechać tylko na jeden dzień, to oczywiście też w
+            porządku, po prostu zaznaczcie to w formularzu.
           </p>
         </section>
 
@@ -51,17 +53,17 @@ export default function App() {
           </p>
           <h2>O co pytacie najczęściej</h2>
           <p>
-            <strong>Czy można z dziećmi?</strong> Można, tylko dajcie znać
-            w notatce, żebyśmy przygotowali miejsce.
+            <strong>Czy można z dziećmi?</strong> Można, tylko dajcie znać w
+            notatce, żebyśmy przygotowali miejsce.
           </p>
           <p>
-            <strong>Czy przynosić prezenty?</strong> Naprawdę nie trzeba.
-            Jeśli bardzo chcecie — pieluchy rozmiar 2 znikają najszybciej.
+            <strong>Czy przynosić prezenty?</strong> Naprawdę nie trzeba. Jeśli
+            bardzo chcecie — pieluchy rozmiar 2 znikają najszybciej.
           </p>
           <p>
             <strong>Co, jeśli termin zniknie z kalendarza?</strong> Znaczy, że
-            ktoś był szybszy. Kalendarz odświeża się sam, więc warto zajrzeć
-            za kilka dni.
+            ktoś był szybszy. Kalendarz odświeża się sam, więc warto zajrzeć za
+            kilka dni.
           </p>
         </section>
       </main>
