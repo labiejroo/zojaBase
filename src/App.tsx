@@ -31,7 +31,7 @@ export default function App() {
             potwierdzimy go mailem.
           </p>
           <p>
-            Rezerwujemy całe weekendy — sobota i niedziela zawsze razem.
+            Rezerwujemy całe weekendy, sobota i niedziela zawsze razem.
             Przyjazd jest tylko na jeden dzień, drugi jest dla nas, bo też
             chcemy odpocząć po tygodniu.
           </p>
@@ -63,7 +63,7 @@ export default function App() {
               </span>
             </a>
             {/* Poza linkiem: klikalna ma być sama atrybucja, nie cała fraza. */}
-            <span>między jednym karmieniem a drugim.</span>
+            <span>między jednym karmieniem, a drugim.</span>
           </p>
         </section>
 
@@ -75,7 +75,7 @@ export default function App() {
           </p>
           <p>
             <strong>Czy przynosić prezenty?</strong> Naprawdę nie trzeba. Jeśli
-            bardzo chcecie — pieluchy rozmiar 2 znikają najszybciej.
+            bardzo chcecie, pieluchy rozmiar 2 znikają najszybciej.
           </p>
           <p>
             <strong>Co, jeśli termin zniknie z kalendarza?</strong> Znaczy, że
