@@ -109,13 +109,21 @@ code {
 
 /* --- atrybucja pod kalendarzem --- */
 
+/* Cały wiersz: atrybucja plus dopisek. Zawija się na wąskich ekranach. */
+.made-by-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
 .made-by {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 16px;
-  color: var(--muted);
-  font-size: 12.5px;
+  color: inherit;
   text-decoration: none;
   transition: color 0.15s ease;
 }
@@ -181,17 +189,7 @@ code {
   color: var(--muted);
 }
 
-.footer {
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--muted);
-}
 
-.footer p {
-  margin: 0;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .embed__frame {

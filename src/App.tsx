@@ -42,26 +42,30 @@ export default function App() {
           <h2 id="rezerwacja">Wybierzcie termin</h2>
           <ZojaEmbed origin={ZOJA_ORIGIN} showDiagnostics={SHOW_DIAGNOSTICS} />
 
-          <a
-            className="made-by"
-            href="https://wizjaikod.netlify.app"
-            target="_blank"
-            // noopener odcina nowej karcie dostęp do window.opener,
-            // noreferrer nie wysyła nagłówka Referer.
-            rel="noopener noreferrer"
-          >
-            <span>Stworzone przez</span>
-            {/*
-              Ten sam wariant logo i ta sama plakietka co w stopce Domków na
-              Pniu: `logo-ink` jest ciemne, więc potrzebuje jasnego podkładu.
-              Wysokość zadana w CSS, szerokość z proporcji — plik ma 893×209 px,
-              a `width`/`height` są tu po to, żeby przeglądarka zarezerwowała
-              miejsce i układ nie skoczył po doczytaniu obrazka.
-            */}
-            <span className="made-by__badge">
-              <img src="/assets/logo-ink.png" alt="WizjaKod" width={893} height={209} />
-            </span>
-          </a>
+          <p className="made-by-line">
+            <a
+              className="made-by"
+              href="https://wizjaikod.netlify.app"
+              target="_blank"
+              // noopener odcina nowej karcie dostęp do window.opener,
+              // noreferrer nie wysyła nagłówka Referer.
+              rel="noopener noreferrer"
+            >
+              <span>Stworzone przez</span>
+              {/*
+                Ten sam wariant logo i ta sama plakietka co w stopce Domków na
+                Pniu: `logo-ink` jest ciemne, więc potrzebuje jasnego podkładu.
+                Wysokość zadana w CSS, szerokość z proporcji — plik ma 893×209 px,
+                a `width`/`height` są tu po to, żeby przeglądarka zarezerwowała
+                miejsce i układ nie skoczył po doczytaniu obrazka.
+              */}
+              <span className="made-by__badge">
+                <img src="/assets/logo-ink.png" alt="WizjaKod" width={893} height={209} />
+              </span>
+            </a>
+            {/* Poza linkiem: klikalna ma być sama atrybucja, nie cała fraza. */}
+            <span>, między jednym karmieniem a drugim.</span>
+          </p>
         </section>
 
         <section className="prose">
@@ -82,9 +86,6 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <p>Zrobione w domu, między jednym karmieniem a drugim.</p>
-      </footer>
     </div>
   );
 }
