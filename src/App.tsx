@@ -14,12 +14,11 @@ export default function App() {
   return (
     <div className="page">
       <header className="header">
-        <p className="header__eyebrow">Rodzina Labuz</p>
+        <p className="header__eyebrow">Rodzina Łabuz</p>
         <h1 className="header__title">Zoja jest już z nami</h1>
         <p className="header__lead">
-          Urodziła się w sierpniu, waży trzy i pół kilo i śpi wyłącznie wtedy,
-          gdy ktoś ją nosi. Dziękujemy za wszystkie wiadomości — jest ich tyle,
-          że odpisujemy powoli.
+          Urodziła się 25 lipca, ważyła prawie cztery kilo i śpi wyłącznie
+          wtedy, gdy ktoś ją nosi.
         </p>
       </header>
 
@@ -33,24 +32,39 @@ export default function App() {
             potwierdzimy go mailem.
           </p>
           <p>
-            Rezerwujemy całe weekendy — sobota i niedziela zawsze razem. Jeśli
-            wolicie przyjechać tylko na jeden dzień, to oczywiście też w
-            porządku, po prostu zaznaczcie to w formularzu.
+            Rezerwujemy całe weekendy — sobota i niedziela zawsze razem.
+            Przyjazd jest tylko na jeden dzień, drugi jest dla nas, bo też
+            chcemy odpocząć po tygodniu.
           </p>
         </section>
 
         <section className="embed-section" aria-labelledby="rezerwacja">
           <h2 id="rezerwacja">Wybierzcie termin</h2>
           <ZojaEmbed origin={ZOJA_ORIGIN} showDiagnostics={SHOW_DIAGNOSTICS} />
+
+          <a
+            className="made-by"
+            href="https://wizjaikod.netlify.app"
+            target="_blank"
+            // noopener odcina nowej karcie dostęp do window.opener,
+            // noreferrer nie wysyła nagłówka Referer.
+            rel="noopener noreferrer"
+          >
+            <span>Stworzone przez</span>
+            {/*
+              Ten sam wariant logo i ta sama plakietka co w stopce Domków na
+              Pniu: `logo-ink` jest ciemne, więc potrzebuje jasnego podkładu.
+              Wysokość zadana w CSS, szerokość z proporcji — plik ma 893×209 px,
+              a `width`/`height` są tu po to, żeby przeglądarka zarezerwowała
+              miejsce i układ nie skoczył po doczytaniu obrazka.
+            */}
+            <span className="made-by__badge">
+              <img src="/assets/logo-ink.png" alt="WizjaKod" width={893} height={209} />
+            </span>
+          </a>
         </section>
 
         <section className="prose">
-          <h2>Jak do nas trafić</h2>
-          <p>
-            Jesteśmy pod tym samym adresem co zawsze. Autobus 128 zatrzymuje się
-            dwie ulice dalej, a przed domem prawie zawsze jest miejsce
-            parkingowe — poza sobotnim porankiem, kiedy obok stoi targ.
-          </p>
           <h2>O co pytacie najczęściej</h2>
           <p>
             <strong>Czy można z dziećmi?</strong> Można, tylko dajcie znać w

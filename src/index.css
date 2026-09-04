@@ -107,6 +107,40 @@ code {
   font-size: 22px;
 }
 
+/* --- atrybucja pod kalendarzem --- */
+
+.made-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12.5px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.made-by:hover,
+.made-by:focus-visible {
+  color: var(--ink2);
+}
+
+/* Jasny podkład pod ciemnym logo — ten sam zabieg co w stopce Domków na Pniu. */
+.made-by__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.made-by__badge img {
+  display: block;
+  height: 14px;
+  width: auto;
+}
+
 /* --- osadzona apka --- */
 
 .embed {
