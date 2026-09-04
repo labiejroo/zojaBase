@@ -54,14 +54,6 @@ code {
   border-bottom: 1px solid var(--line);
 }
 
-.header__eyebrow {
-  margin: 0 0 12px;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 .header__title {
   margin: 0 0 16px;
   font-size: clamp(30px, 7vw, 46px);

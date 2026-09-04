@@ -14,7 +14,6 @@ export default function App() {
   return (
     <div className="page">
       <header className="header">
-        <p className="header__eyebrow">Rodzina Łabuz</p>
         <h1 className="header__title">Zoja jest już z nami</h1>
         <p className="header__lead">
           Urodziła się 25 lipca, ważyła prawie cztery kilo i śpi wyłącznie
