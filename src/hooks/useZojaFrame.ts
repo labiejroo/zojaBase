@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
+  EMBED_ANCHOR_ID,
   ZOJA_PARENT_VIEWPORT,
   clampHeight,
   isResizeMessage,
+  isScrollToEmbedMessage,
   type ZojaParentViewportMessage,
 } from "../lib/zojaMessages";
 
@@ -75,6 +77,24 @@ export function useZojaFrame(origin: string, initialHeight = 640): UseZojaFrameR
       if (event.origin !== origin) return;
       // I czy to nasza ramka, a nie inny iframe na stronie.
       if (event.source !== frameRef.current?.contentWindow) return;
+
+      /**
+       * Ramka otworzyła formularz i prosi o przewinięcie do sekcji.
+       *
+       * Kotwicę wybieramy MY — ramka podaje tylko moment, nie piksele. Gdyby
+       * podawała pozycję, wiedziałaby o naszym układzie więcej, niż powinna,
+       * a każda zmiana tej strony wymagałaby wdrożenia po drugiej stronie.
+       */
+      if (isScrollToEmbedMessage(event.data)) {
+        document
+          .getElementById(EMBED_ANCHOR_ID)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Po przewinięciu widoczny wycinek ramki jest inny — mówimy o tym od
+        // razu, nie czekając na zdarzenie `scroll`.
+        scheduleViewport();
+        return;
+      }
+
       if (!isResizeMessage(event.data)) return;
 
       setHeight(clampHeight(event.data.height + FRAME_HEIGHT_PADDING));
