@@ -64,7 +64,7 @@ export default function App() {
               </span>
             </a>
             {/* Poza linkiem: klikalna ma być sama atrybucja, nie cała fraza. */}
-            <span>, między jednym karmieniem a drugim.</span>
+            <span>między jednym karmieniem a drugim.</span>
           </p>
         </section>
 

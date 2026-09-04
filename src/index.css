@@ -109,11 +109,18 @@ code {
 
 /* --- atrybucja pod kalendarzem --- */
 
-/* Cały wiersz: atrybucja plus dopisek. Zawija się na wąskich ekranach. */
+/*
+ * Cały wiersz: atrybucja plus dopisek. Zawija się na wąskich ekranach.
+ *
+ * `gap` robi tu za spację między plakietką a tekstem. Zwykła spacja z JSX by
+ * nie wystarczyła — link i tekst są osobnymi elementami flexa, a te sklejają
+ * się bez odstępu.
+ */
 .made-by-line {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 5px;
   margin: 16px 0 0;
   color: var(--muted);
   font-size: 12.5px;
