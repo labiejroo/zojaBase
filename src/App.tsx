@@ -6,8 +6,36 @@ import { ZojaEmbed } from "./components/ZojaEmbed";
  * i dało się sprawdzić, czy modal w iframe trzyma się pola widzenia.
  */
 
-const ZOJA_ORIGIN =
-  import.meta.env.VITE_ZOJA_ORIGIN ?? "https://d3idn259a1zzt7.cloudfront.net";
+/**
+ * Origin apki sprowadzamy do postaci kanonicznej.
+ *
+ * `event.origin` z przeglądarki NIGDY nie ma końcowego ukośnika, więc adres
+ * zapisany jako "https://…/" nie dopasuje się do żadnej wiadomości od ramki.
+ * Objaw jest wredny: nic nie wybucha, ramka po prostu przestaje zmieniać
+ * wysokość, a w konsoli cisza.
+ *
+ * Dokładnie ten błąd naprawialiśmy już po drugiej stronie, w apce Next
+ * (lib/iframeMessages.ts). Tutaj ratowało nas dotąd wyłącznie to, że nikt tego
+ * ukośnika nie postawił w .env — jedna literówka w panelu Netlify wystarczyłaby,
+ * żeby wrócił.
+ *
+ * new URL().origin obcina też ścieżkę, port domyślny i normalizuje wielkość
+ * liter w hoście. Przy adresie nie do sparsowania zostajemy przy wartości
+ * surowej bez końcowych ukośników — lepsze to niż pusty origin, który nie
+ * dopasowałby się do niczego.
+ */
+function normalizeOrigin(value: string): string {
+  const trimmed = value.trim();
+  try {
+    return new URL(trimmed).origin;
+  } catch {
+    return trimmed.replace(/\/+$/, "");
+  }
+}
+
+const ZOJA_ORIGIN = normalizeOrigin(
+  import.meta.env.VITE_ZOJA_ORIGIN ?? "https://d3idn259a1zzt7.cloudfront.net",
+);
 const SHOW_DIAGNOSTICS = import.meta.env.VITE_SHOW_DIAGNOSTICS === "true";
 
 export default function App() {
