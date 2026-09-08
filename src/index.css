@@ -25,6 +25,16 @@ body {
   margin: 0;
   background: var(--sand);
   -webkit-font-smoothing: antialiased;
+
+  /* Tor dekoracyjnego dziecka ma szerokosc 100vw, czyli razem z paskiem
+     przewijania — o kilkanascie pikseli wiecej niz obszar widoczny. Bez tego
+     przyciecia strona dostalaby poziomy suwak.
+
+     clip zamiast hidden: nie tworzy kontenera przewijania, wiec nie psuje
+     position: sticky. hidden zostaje jako zapas dla starszych przegladarek —
+     kolejnosc ma znaczenie, nowsze wezma druga deklaracje. */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -193,5 +203,67 @@ code {
 @media (prefers-reduced-motion: reduce) {
   .embed__frame {
     transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   DEKORACYJNE DZIECKO PEŁZAJĄCE
+
+   Tor jest szerszy niż kolumna tekstu: .page ma max-width 780px, więc bez
+   wyjścia poza nią dziecko pojawiałoby się i znikało w środku ekranu, na
+   pustym tle. calc(50% - 50vw) cofa lewą krawędź toru dokładnie do krawędzi
+   okna, niezależnie od tego, jak szeroka jest kolumna.
+
+   100vw liczy się razem z paskiem przewijania, więc tor wystaje o jego
+   szerokość poza obszar widoczny. Przycina to guard na <body> niżej.
+--------------------------------------------------------------------------- */
+.crawl-host {
+  position: relative;
+}
+
+.crawling-baby {
+  position: absolute;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  bottom: var(--crawl-bottom, 0);
+
+  /* Wysokość równa szerokości obrazka: pełzające dziecko jest szersze niż
+     wyższe, więc mieści się z zapasem, a tor nie rozpycha układu. */
+  height: var(--crawl-size);
+
+  overflow: hidden;
+
+  /* Dekoracja nie może przejmować kliknięć ani blokować tekstu pod spodem. */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.crawling-baby__img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: var(--crawl-size);
+  height: auto;
+
+  /* Stan spoczynku: całe dziecko poza kadrem po lewej. Gdyby animacja nigdy
+     nie ruszyła, nic nie wystaje na stronę. */
+  transform: translate3d(calc(-1 * var(--crawl-size)), 0, 0);
+}
+
+.crawling-baby--running .crawling-baby__img {
+  /* linear, nie ease: pełzanie ma stałe tempo. Przyspieszenie na starcie
+     wyglądałoby jak poślizg, a nie jak ruch po podłodze. */
+  animation: crawl-across var(--crawl-duration) linear var(--crawl-delay) 1 both;
+  will-change: transform;
+}
+
+@keyframes crawl-across {
+  from {
+    transform: translate3d(calc(-1 * var(--crawl-size)), 0, 0);
+  }
+  to {
+    /* Lewa krawędź obrazka na prawej krawędzi okna = całość poza kadrem. */
+    transform: translate3d(100vw, 0, 0);
   }
 }

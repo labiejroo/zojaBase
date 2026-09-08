@@ -1,3 +1,4 @@
+import { CrawlingBaby } from "./components/CrawlingBaby";
 import { ZojaEmbed } from "./components/ZojaEmbed";
 
 /**
@@ -50,7 +51,13 @@ export default function App() {
       </header>
 
       <main className="content">
-        <section className="prose">
+        {/*
+          crawl-host nadaje sekcji position: relative — tor dziecka kotwiczy
+          sie do jej dolnej krawedzi. Sekcja jest tekstowa i nieinteraktywna,
+          wiec przejezdzajaca dekoracja nie zasloni niczego, w co da sie
+          kliknac, a lezy tuz przed kalendarzem.
+        */}
+        <section className="prose crawl-host">
           <h2>Kilka słów, zanim przyjedziecie</h2>
           <p>
             Bardzo chcemy Was zobaczyć, ale pierwsze tygodnie są
@@ -63,6 +70,8 @@ export default function App() {
             Przyjazd jest tylko na jeden dzień, drugi jest dla nas, bo też
             chcemy odpocząć po tygodniu.
           </p>
+
+          <CrawlingBaby duration={12} bottomOffset={0} />
         </section>
 
         <section className="embed-section" aria-labelledby="rezerwacja">
