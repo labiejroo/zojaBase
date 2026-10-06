@@ -112,7 +112,7 @@ export default function App() {
           </p>
           <p>
             <strong>Czy przynosić prezenty?</strong> Naprawdę nie trzeba. Jeśli
-            bardzo chcecie, pieluchy rozmiar 2 znikają najszybciej.
+            bardzo chcecie, pieluchy rozmiar 3 znikają najszybciej.
           </p>
           <p>
             <strong>Co, jeśli termin zniknie z kalendarza?</strong> Znaczy, że
